@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Certificate Verification</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #2563eb;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .details {
+            margin-top: 20px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        .raw-text {
+            margin-top: 30px;
+            background: #f1f1f1;
+            padding: 15px;
+            white-space: pre-wrap;
+            border-radius: 8px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Certificate Verification System</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <input
+            type="file"
+            name="certificate"
+            accept=".pdf,.jpg,.jpeg,.png"
+            required
+        >
+
+        <br><br>
+
+        <button type="submit">
+            Extract Certificate
+        </button>
+
+    </form>
+
+
+    {% if details %}
+
+    <div class="details">
+
+        <h2>Certificate Details</h2>
+
+        <div class="row">
+            <span class="label">Name</span>
+            <span>{{ details.name }}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Course</span>
+            <span>{{ details.course }}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Score</span>
+            <span>{{ details.score }}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Assignment</span>
+            <span>{{ details.assignment }}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Proctored Exam</span>
+            <span>{{ details.exam }}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Roll Number</span>
+            <span>{{ details.roll_no }}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Course Period</span>
+            <span>{{ details.course_period }}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Credits</span>
+            <span>{{ details.credits }}</span>
+        </div>
+
+    </div>
+
+    {% endif %}
+
+
+    {% if text %}
+
+    <div class="raw-text">
+
+        <h2>Extracted Text</h2>
+
+        {{ text }}
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
